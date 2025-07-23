@@ -1,6 +1,7 @@
 package com.example.freedomoftime.controller;
 
 import com.example.freedomoftime.entity.Tarefa;
+import com.example.freedomoftime.service.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.freedomoftime.repository.TarefaRepository;
@@ -12,41 +13,32 @@ import java.util.List;
 public class TarefaController {
 
     @Autowired
-    private final TarefaRepository tarefaRepository;
+    private TarefaService tarefaService;
 
-
-    public TarefaController(TarefaRepository tarefaRepository) {
-        this.tarefaRepository = tarefaRepository;
-    }
 
     @PostMapping
     public Tarefa criarTarefa(@RequestBody Tarefa tarefa){
-        return tarefaRepository.save(tarefa);
+        return tarefaService.criarTarefa(tarefa);
     }
 
     @GetMapping
     public List<Tarefa> listarTarefa(){
-        return tarefaRepository.findAll();
+        return tarefaService.listarTarefas();
     }
 
     @GetMapping("/{id}")
     public Tarefa buscarTarefaPorId(@PathVariable Long id){
-        return tarefaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
+        return tarefaService.buscarTarefaPorId(id);
     }
 
     @PutMapping("{id}")
     public Tarefa atualizarTarefa(@PathVariable long id, @RequestBody Tarefa novaTarefa) {
-        Tarefa tarefa = tarefaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
-        tarefa.setNome(novaTarefa.getNome());
-        tarefa.setData(novaTarefa.getData());
-        tarefa.setStatus(novaTarefa.getStatus());
-        tarefa.setObservacao(novaTarefa.getObservacao());
-        return tarefaRepository.save(tarefa);
+        return tarefaService.atualizarTarefa(id, novaTarefa);
     }
 
     @DeleteMapping("/{id}")
     public void deletarTarefa(@PathVariable Long id){
-        tarefaRepository.deleteById(id);
+        tarefaService.deletarTarefa(id);
     }
 
 
