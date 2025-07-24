@@ -16,6 +16,13 @@ public class Tarefa {
     private String data;
     private String observacao;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome(){
         return nome;

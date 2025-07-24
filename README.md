@@ -18,3 +18,4 @@ Nesta primeira etapa do projeto será o CRUD das funcionalidades
 - Spring Boot - 3.5.3
 - Banco de dados H2 (Para primeiro teste do projeto)
 - Interface visual (Futuro)
+

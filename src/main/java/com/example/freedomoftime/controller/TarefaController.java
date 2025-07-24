@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarefas")
+@CrossOrigin(origins = "*") // Acesso ao frontend
 public class TarefaController {
 
     @Autowired
