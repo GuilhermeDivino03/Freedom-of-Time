@@ -1,5 +1,6 @@
 package com.example.freedomoftime.entity;
 
+import com.example.freedomoftime.enun.StatusTarefa;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +12,7 @@ public class Tarefa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-    private String status;
+    private StatusTarefa status;
     private String data;
     private String observacao;
 
@@ -24,10 +25,10 @@ public class Tarefa {
         this.nome = nome;
     }
 
-    public String getStatus(){
+    public StatusTarefa getStatus(){
         return status;
     }
-    public void setStatus(String status){
+    public void setStatus(StatusTarefa status){
         this.status = status;
     }
 

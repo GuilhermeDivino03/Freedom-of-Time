@@ -27,6 +27,10 @@ public class TarefaService {
         return tarefaRepository.save(tarefa);
     }
 
+    public List<Tarefa> criarTarefaEmLote(@RequestBody List<Tarefa> tarefa){
+        return tarefaRepository.saveAll(tarefa);
+    }
+
     public Tarefa atualizarTarefa(Long id, Tarefa novaTarefa){
         Tarefa tarefa = tarefaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
         tarefa.setNome(novaTarefa.getNome());

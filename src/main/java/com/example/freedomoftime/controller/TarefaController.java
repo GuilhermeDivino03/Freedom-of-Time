@@ -21,6 +21,11 @@ public class TarefaController {
         return tarefaService.criarTarefa(tarefa);
     }
 
+    @PostMapping("/lote")
+    public List<Tarefa> criarVariasTarefas(@RequestBody List<Tarefa> tarefa){
+        return tarefaService.criarTarefaEmLote(tarefa);
+    }
+
     @GetMapping
     public List<Tarefa> listarTarefa(){
         return tarefaService.listarTarefas();
